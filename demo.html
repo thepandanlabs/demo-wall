@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo — DEMOWALL</title>
+    <meta
+      name="description"
+      content="A single technology demo from the wall: watch the clip, read the field notes."
+    />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:site_name" content="DEMOWALL" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/css/phosphor.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/wall.css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="/">
+          <span class="dot" aria-hidden="true"></span>
+          <span>DEMOWALL</span>
+          <span class="sub">the wall</span>
+        </a>
+        <nav class="nav" aria-label="Site">
+          <a href="/about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="demo-top">
+      <div class="container">
+        <div class="back-row">
+          <a class="back-link" href="/">
+            <i class="ph ph-arrow-left" aria-hidden="true"></i>
+            Back to the wall
+          </a>
+        </div>
+
+        <div id="player" class="player">
+          <div class="skeleton" style="position: absolute; inset: 0"></div>
+        </div>
+
+        <section class="demo-head">
+          <div>
+            <div class="company-line" id="company-line"></div>
+            <h1 id="demo-title">Loading demo…</h1>
+            <p class="tagline" id="demo-tagline"></p>
+          </div>
+          <div class="share-row" id="share-row"></div>
+        </section>
+
+        <div class="demo-body">
+          <div class="demo-main">
+            <h2>About this demo</h2>
+            <div id="demo-description"></div>
+
+            <div id="demo-notes" class="demo-notes" hidden>
+              <h2><i class="ph ph-notes" aria-hidden="true"></i> Why it's interesting</h2>
+              <p id="demo-notes-body"></p>
+              <div class="notes-by" id="demo-notes-by"></div>
+            </div>
+          </div>
+
+          <aside>
+            <div class="meta-list" id="meta-list"></div>
+            <p class="meta-note">
+              Want your own demo documented this way? Send the wall a note from the demo floor.
+            </p>
+          </aside>
+        </div>
+
+        <section class="related" id="related">
+          <h2>More from the wall</h2>
+          <div class="grid" id="related-grid"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container inner">
+        <div>
+          <div class="wordmark">DEMOWALL</div>
+          <div class="rule" aria-hidden="true"></div>
+          <p>
+            An independent collection of interesting technology demos encountered at
+            conferences, meetups and in the wild. Recorded and curated by tech demo enthusiasts.
+          </p>
+        </div>
+        <div class="footer-links">
+          <span class="kicker">Index</span>
+          <a href="/about.html">About the wall</a>
+          <a href="https://www.youtube.com/@DevsCentral/videos" target="_blank" rel="noopener">DevsCentral</a>
+          <a href="/admin.html">Admin</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="share-copied" id="copied-toast">Link copied</div>
+
+    <script type="module" src="/assets/js/demo.js"></script>
+  </body>
+</html>

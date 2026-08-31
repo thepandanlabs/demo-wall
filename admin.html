@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — DEMOWALL</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/css/phosphor.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-wrap">
+      <header class="site-header">
+        <div class="container inner">
+          <a class="brand" href="/">
+            <span class="dot" aria-hidden="true"></span>
+            <span>DEMOWALL</span>
+            <span class="sub">admin</span>
+          </a>
+          <nav class="nav" aria-label="Site">
+            <a href="/">View wall</a>
+            <a href="/about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Login -->
+      <main id="login-view" class="login" hidden>
+        <form class="login-card" id="login-form">
+          <div class="wordmark">DEMOWALL</div>
+          <div class="kicker">Behind the scenes · password required</div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              required
+              autofocus
+            />
+          </div>
+          <div class="login-err" id="login-err" role="alert"></div>
+          <div class="form-actions">
+            <button class="btn btn-accent" type="submit" id="login-btn">Unlock</button>
+          </div>
+        </form>
+      </main>
+
+      <!-- Dashboard -->
+      <main id="dash-view" class="admin-main container" hidden>
+        <div class="head">
+          <div>
+            <h1>Demos</h1>
+            <div class="status-line">
+              <span class="status-dot" id="status-dot"></span>
+              <span id="status-text">connected</span>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="search">
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" id="search" placeholder="Search demos…" aria-label="Search demos" />
+            </div>
+            <button class="btn btn-ghost" id="refresh-btn">
+              <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-accent" id="new-btn">
+              <i class="ph ph-plus" aria-hidden="true"></i> New demo
+            </button>
+            <button class="btn btn-ghost" id="logout-btn">Log out</button>
+          </div>
+        </div>
+
+        <div class="demo-list" id="demo-list"></div>
+        <div id="admin-empty" class="empty-state" style="display: none">
+          <div class="big">Nothing on the wall yet.</div>
+          <p>Add the first demo with the button above.</p>
+        </div>
+      </main>
+
+      <!-- Editor -->
+      <main id="editor-view" class="admin-main container" hidden>
+        <div class="head">
+          <div>
+            <h1 id="editor-title">New demo</h1>
+            <div class="status-line"><span class="status-dot" id="editor-dot"></span><span id="editor-status">draft</span></div>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-ghost" id="cancel-btn">
+              <i class="ph ph-arrow-left" aria-hidden="true"></i> Back
+            </button>
+            <button class="btn btn-accent" id="save-btn">
+              <i class="ph ph-check" aria-hidden="true"></i> Save demo
+            </button>
+          </div>
+        </div>
+
+        <form class="editor" id="editor-form">
+          <div>
+            <div class="panel">
+              <span class="kicker">The demo</span>
+              <div class="field">
+                <label for="f-title">Title <em>*</em></label>
+                <input class="input" id="f-title" required placeholder="e.g. Agent workforce builder" />
+              </div>
+              <div class="row2">
+                <div class="field">
+                  <label for="f-company">Company</label>
+                  <input class="input" id="f-company" placeholder="Acme Corp" />
+                </div>
+                <div class="field">
+                  <label for="f-event">Event / place</label>
+                  <input class="input" id="f-event" placeholder="LEAP 2026" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-tagline">One-line hook</label>
+                <input class="input" id="f-tagline" placeholder="What you see in a glance" />
+              </div>
+              <div class="field">
+                <label for="f-description">About this demo</label>
+                <textarea class="textarea" id="f-description" placeholder="What it does, how it works, what is interesting. Blank line = new paragraph."></textarea>
+              </div>
+              <div class="field">
+                <label for="f-notes">Why it is interesting (field notes)</label>
+                <textarea class="textarea" id="f-notes" placeholder="What makes this demo work. What you would steal for the next event."></textarea>
+              </div>
+            </div>
+
+            <div class="panel">
+              <span class="kicker">Video & thumbnail</span>
+              <div class="field">
+                <label for="f-youtube">YouTube link (unlisted works)</label>
+                <input class="input" id="f-youtube" placeholder="https://youtu.be/… or https://www.youtube.com/watch?v=…" />
+                <div class="hint" id="yt-hint">Upload as unlisted to DevsCentral, then paste the link here.</div>
+              </div>
+              <div class="field">
+                <label>Thumbnail</label>
+                <div class="thumb-preview">
+                  <img id="thumb-img" alt="Thumbnail preview" hidden />
+                  <span class="thumb-empty" id="thumb-empty">No thumbnail yet</span>
+                </div>
+                <span class="file-btn btn btn-ghost btn-sm">
+                  <i class="ph ph-upload-simple" aria-hidden="true"></i> Upload custom image
+                  <input type="file" id="f-thumb-file" accept="image/png,image/jpeg,image/webp" />
+                </span>
+                <span class="thumb-source" id="thumb-source"></span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="panel">
+              <span class="kicker">Attribution</span>
+              <div class="row2">
+                <div class="field">
+                  <label for="f-person">Explained by</label>
+                  <input class="input" id="f-person" placeholder="Name" />
+                </div>
+                <div class="field">
+                  <label for="f-role">Role</label>
+                  <input class="input" id="f-role" placeholder="e.g. Co-founder" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-company-url">Company URL</label>
+                <input class="input" id="f-company-url" placeholder="https://…" />
+              </div>
+              <div class="row2">
+                <div class="field">
+                  <label for="f-category">Category</label>
+                  <input class="input" id="f-category" list="cat-list" placeholder="e.g. AI Agents" />
+                  <datalist id="cat-list"></datalist>
+                </div>
+                <div class="field">
+                  <label for="f-captured">Captured on</label>
+                  <input class="input" type="date" id="f-captured" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-tags">Tags <span class="hint">comma separated</span></label>
+                <input class="input" id="f-tags" placeholder="robotics, edge, vision" />
+              </div>
+              <div class="field">
+                <label for="f-recorded-by">Recorded by</label>
+                <input class="input" id="f-recorded-by" placeholder="tech demo enthusiasts" />
+              </div>
+            </div>
+
+            <div class="panel">
+              <span class="kicker">Placement</span>
+              <div class="checkbox-grid">
+                <label class="check">
+                  <input type="checkbox" id="f-published" />
+                  <span><b>Published</b><small>Visible on the public wall</small></span>
+                </label>
+                <label class="check">
+                  <input type="checkbox" id="f-featured" />
+                  <span><b>Featured</b><small>Spotlight at the top of the wall</small></span>
+                </label>
+              </div>
+              <div class="field" style="margin-top: 1rem">
+                <label for="f-sort">Order (higher = closer to the front)</label>
+                <input class="input" type="number" id="f-sort" value="0" />
+              </div>
+              <div class="hint" style="margin-top: 0.6rem" id="save-hint"></div>
+            </div>
+          </div>
+        </form>
+      </main>
+
+      <footer class="site-footer" style="margin-top: 0">
+        <div class="container inner">
+          <div>
+            <div class="wordmark">DEMOWALL</div>
+            <div class="rule" aria-hidden="true"></div>
+            <p>Behind-the-scenes panel. Changes appear on the public wall immediately.</p>
+          </div>
+          <div class="footer-links">
+            <span class="kicker">Index</span>
+            <a href="/">View wall</a>
+            <a href="/about.html">About</a>
+            <a href="https://www.youtube.com/@DevsCentral/videos" target="_blank" rel="noopener">DevsCentral</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="/assets/js/admin.js"></script>
+  </body>
+</html>

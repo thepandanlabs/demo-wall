@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DEMOWALL — Interesting technology, demonstrated</title>
+    <meta
+      name="description"
+      content="A curated wall of technology demos captured at conferences, meetups and in the wild. Short clips, real explanations, field notes."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DEMOWALL" />
+    <meta
+      property="og:description"
+      content="Interesting technology, demonstrated. A curated wall of tech demos."
+    />
+    <meta property="og:site_name" content="DEMOWALL" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/css/phosphor.css" />
+    <link rel="stylesheet" href="/assets/css/theme.css" />
+    <link rel="stylesheet" href="/assets/css/wall.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="/">
+          <span class="dot" aria-hidden="true"></span>
+          <span>DEMOWALL</span>
+          <span class="sub">the wall</span>
+        </a>
+        <nav class="nav" aria-label="Site">
+          <a href="/about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1 class="wordmark">
+            DEMO<span class="slash">/</span>WALL
+          </h1>
+
+          <div class="hero-row">
+            <div class="hero-copy">
+              <p class="lede">Interesting technology, demonstrated.</p>
+              <p>
+                Short, technically literate clips of things actually being built and shown.
+                No talking heads. Just the demo, the hands, and the people who can explain it.
+              </p>
+            </div>
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <span class="kicker"><span class="rec-dot" aria-hidden="true"></span>Live</span>
+                <div class="value" id="count-value">—</div>
+                <div class="sub" id="count-sub">loading</div>
+              </div>
+              <div class="hero-meta-item">
+                <span class="kicker">Events</span>
+                <div class="value" id="events-value">—</div>
+                <div class="sub">places captured</div>
+              </div>
+              <div class="hero-meta-item">
+                <span class="kicker">Curated</span>
+                <div class="value">Enthusiasts</div>
+                <div class="sub">recorded in the wild</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="filterbar">
+        <div class="container inner">
+          <span class="count-label" id="result-count"></span>
+          <div id="chips" class="chips" aria-label="Filter by category"></div>
+          <span class="spacer"></span>
+        </div>
+      </div>
+
+      <section id="spotlight" class="spotlight" style="display: none">
+        <div class="container">
+          <div id="spotlight-inner"></div>
+        </div>
+      </section>
+
+      <section class="wall">
+        <div class="container">
+          <div class="section-head">
+            <h2>The wall</h2>
+            <span class="hint">tap any demo to play</span>
+          </div>
+
+          <div id="wall-skeleton" class="wall-grid" aria-hidden="true">
+            <div class="card skeleton-card">
+              <div class="skeleton skeleton-media"></div>
+              <div class="skeleton-lines">
+                <div class="skeleton l1"></div>
+                <div class="skeleton l2"></div>
+                <div class="skeleton l3"></div>
+              </div>
+            </div>
+            <div class="card skeleton-card">
+              <div class="skeleton skeleton-media"></div>
+              <div class="skeleton-lines">
+                <div class="skeleton l1"></div>
+                <div class="skeleton l2"></div>
+                <div class="skeleton l3"></div>
+              </div>
+            </div>
+            <div class="card skeleton-card">
+              <div class="skeleton skeleton-media"></div>
+              <div class="skeleton-lines">
+                <div class="skeleton l1"></div>
+                <div class="skeleton l2"></div>
+                <div class="skeleton l3"></div>
+              </div>
+            </div>
+            <div class="card skeleton-card">
+              <div class="skeleton skeleton-media"></div>
+              <div class="skeleton-lines">
+                <div class="skeleton l1"></div>
+                <div class="skeleton l2"></div>
+                <div class="skeleton l3"></div>
+              </div>
+            </div>
+            <div class="card skeleton-card">
+              <div class="skeleton skeleton-media"></div>
+              <div class="skeleton-lines">
+                <div class="skeleton l1"></div>
+                <div class="skeleton l2"></div>
+                <div class="skeleton l3"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="wall-grid" class="wall-grid"></div>
+
+          <div id="wall-empty" class="empty-state" style="display: none">
+            <div class="big">The wall is being built.</div>
+            <p>
+              The first field notes are still being edited and uploaded. Check back after the
+              next event, or drop a demo on the wall yourself.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container inner">
+        <div>
+          <div class="wordmark">DEMOWALL</div>
+          <div class="rule" aria-hidden="true"></div>
+          <p>
+            An independent collection of interesting technology demos encountered at
+            conferences, meetups and in the wild. Recorded and curated by tech demo enthusiasts.
+          </p>
+        </div>
+        <div class="footer-links">
+          <span class="kicker">Index</span>
+          <a href="/about.html">About the wall</a>
+          <a href="https://www.youtube.com/@DevsCentral/videos" target="_blank" rel="noopener">DevsCentral</a>
+          <a href="/admin.html">Admin</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/wall.js"></script>
+  </body>
+</html>
