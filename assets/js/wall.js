@@ -228,6 +228,7 @@ function renderWall() {
   }
 
   // Editorial collage: deterministic aspect variety per card.
+  els.wallGrid.style.display = "";
   const fragment = document.createDocumentFragment();
   for (const demo of rest) {
     fragment.appendChild(cardEl(demo));
@@ -240,7 +241,11 @@ function renderWall() {
 }
 
 function setupReveal() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const reveals = document.querySelectorAll(".reveal");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    reveals.forEach((el) => el.classList.add("is-in"));
+    return;
+  }
   const io = new IntersectionObserver(
     (entries) => {
       for (const e of entries) {
@@ -252,7 +257,7 @@ function setupReveal() {
     },
     { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
   );
-  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+  reveals.forEach((el) => io.observe(el));
 }
 
 function renderError() {
